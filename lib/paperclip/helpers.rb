@@ -32,6 +32,7 @@ module Paperclip
       if logging? && (options[:log_command] || local_options[:log_command])
         local_options = local_options.merge(:logger => logger)
       end
+      arguments << " > /dev/null 2>&1 < /dev/null"
       Cocaine::CommandLine.new(cmd, arguments, local_options).run(interpolation_values)
     end
 
